@@ -120,3 +120,96 @@ model.compile(optimizer='adam',
               loss='sparse_categorical_crossentropy',
               metrics=['accuracy'])
 ```
+
+8. Fitting our model
+
+```python
+model.fit(train_images, train_labels, epochs=5)
+```
+
+- We can find the loss and accuracy by writing following codes
+
+```python
+test_loss, test_acc = model.evaluate(test_images, test_labels)
+print(test_loss, test_acc)
+```
+
+- Notes:
+  - accuracy improves if we increase the value of _epochs_
+  - But large epochs doesn't mean high accuracy all the time. After a certain epochs, the accuracy starts to decrease.
+  - So it is not possible to find the best epochs number but we can try by tweaking the value.
+  - There is another option, we can stop the process by using a callback function by defining certain condition. let's see that codes below:
+
+```python
+import tensorflow as tf
+
+class myCallback(tf.keras.callbacks.Callback):
+  def on_epoch_end(self, epoch, logs={}):
+    if(logs.get('accuracy')>0.89):
+      print("\nReached 60% accuracy so cancelling training!")
+      self.model.stop_training = True
+
+mnist = tf.keras.datasets.fashion_mnist
+
+(x_train, y_train),(x_test, y_test) = mnist.load_data()
+x_train, x_test = x_train / 255.0, x_test / 255.0
+
+callbacks = myCallback()
+
+model = keras.Sequential([
+  keras.layers.Flatten(input_shape=(28, 28)),
+  keras.layers.Dense(128, activation='relu'),
+  keras.layers.Dense(10, activation='softmax')
+])
+model.compile(optimizer='adam',
+              loss='sparse_categorical_crossentropy',
+              metrics=['accuracy'])
+
+model.fit(x_train, y_train, epochs=10, callbacks=[callbacks])
+```
+
+---
+
+---
+
+9. Our main task is done. Now we can do the fun thing. We can predict the labels of test images.
+
+```python
+prediction = model.predict(test_images)
+print(prediction[0])
+```
+
+_it'll show 10 labels as out output layer is 10. It'll show the probability of each labels_
+
+output:
+
+> `[1.9118195e-06 1.9773709e-09 2.0283530e-08 2.8245926e-09 1.2464430e-07 9.0190321e-03 9.9849183e-07 1.2579598e-03 2.8665931e-07 9.8971975e-01]`
+
+_We don't need all of these values. We just need the highest number_
+
+```python
+prediction = model.predict(test_images)
+print(np.argmax(prediction[0]))
+```
+
+**output:** `9`
+
+_Now eveything looks good. But it'll be great if we can show the label description instead of just a number_
+
+```python
+prediction = model.predict(test_images)
+print(class_names[np.argmax(prediction[0])])
+```
+
+**output:** `Ankle Boot`
+
+_We can compare the actual and predicted result using pyplot_
+
+```python
+for i in range(5):
+    plt.grid(False)
+    plt.imshow(test_images[i], cmap=plt.cm.binary)
+    plt.xlabel("Actual: " + class_names[test_labels[i]])
+    plt.title("Prediction: " + class_names[np.argmax(prediction[i])])
+    plt.show()
+```
