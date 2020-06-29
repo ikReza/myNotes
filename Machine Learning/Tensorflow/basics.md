@@ -34,6 +34,12 @@ import matplotlib.pyplot as plt
 
 > `data = keras.datasets.fashion_mnist`
 
+_It consists of -_
+
+- _70k images_
+- _10 categories_
+- _The images are in grayscale (means the amount of information is reduced) having pixel values 28\*28. less pixel value means less time for computer to do processing_
+
 3. We need to split out data into traing data and test data.
    - First we'll train the data
    - Then we'll use test data to evaluate how accurate is the training.
