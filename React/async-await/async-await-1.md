@@ -75,9 +75,7 @@ the the second line will execute
 
 But the first line will take some time to recieve data from API. Before fetching the data, second line already gets executed. So it has no value(undefined)
 
-<p align="center">
-  <img src="images/one.jpg" title="see my code" alt="one">
-</p>
+![one](images/one.JPG "see my code")
 
 **NB:** As I'm using _quokka_, a vscode extension, I can see the result immediately without going to the browser.
 
@@ -98,13 +96,13 @@ getExchangeRate("USD", "BDT");
 Using _await_ keyword we're telling that please wait until I finish fetching the data, then after it finishes fetching the data, second line will execute.
 
 <p align="center">
-  <img src="images/two.jpg" alt="two">
+  <img src="images/two.JPG" alt="two">
 </p>
 
 We only need currency from data. We can further destructure the _rates_ from data.
 
 <p align="center">
-  <img src="images/rates.jpg" alt="rates">
+  <img src="images/rates.JPG" alt="rates">
 </p>
 
 ```js
