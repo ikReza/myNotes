@@ -85,3 +85,28 @@ int main()
     return 0;
 }
 ```
+
+4. Range based for loop
+
+```c++
+#include <iostream>
+#include <vector>
+
+int main()
+{
+    std::vector <int> vec = {1, 2, 3};
+
+    for(int n: vec) {
+        std::cout << n << " ";
+    }
+
+    /*
+    for(int i = 0; i < vec.size(); i++) {
+        std::cout << vec[i] << " ";
+    }
+    */
+
+    return 0;
+}
+
+```

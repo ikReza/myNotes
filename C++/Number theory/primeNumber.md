@@ -106,6 +106,11 @@ int main()
     for(int i = 0; i < result.size(); i++) {
         std::cout << result[i] << " ";
     }
+    /*
+    for(int prime: result){
+        std::cout << prime << " ";
+    }
+    */
 
     return 0;
 }
