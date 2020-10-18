@@ -41,3 +41,20 @@ int main()
 ```
 
 `Time Complexity`: `O(n/2) ~ O(n)`. This code is more efficient than the first one because we've to loop through only n/2 times.
+
+```c++
+#include <iostream>
+#include <algorithm>
+
+int main()
+{
+    std::string test;
+    getline(std::cin, test);
+
+    reverse(test.begin(), test.end());
+
+    std::cout << test;
+
+    return 0;
+}
+```

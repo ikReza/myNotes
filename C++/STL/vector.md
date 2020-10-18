@@ -110,3 +110,42 @@ int main()
 }
 
 ```
+
+## 2D Vector
+
+Problem link: https://www.hackerrank.com/challenges/variable-sized-arrays/problem
+
+```c++
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL); cout.tie(NULL);
+
+    int n, q;
+    cin >> n >> q;
+    vector< vector<int> > v;
+
+    for(int i = 0; i < n; i++) {
+        int k;
+        cin >> k;
+        v.emplace_back(vector<int> ());
+        for(int j = 0; j < k; j++) {
+            int a;
+            cin >> a;
+            v[i].emplace_back(a);
+        }
+    }
+
+    for(int m = 0; m < q; m++) {
+        int i, j;
+        cin >> i >> j;
+        cout << v[i][j] << "\n";
+    }
+
+    return 0;
+}
+```
