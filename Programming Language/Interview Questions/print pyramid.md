@@ -5,7 +5,7 @@
 ```c++
 void print(int limit) {
     for(int i = 1; i < 2*limit; i++) {
-        (i > limit) ? std::cout << (2*limit - i) : std::cout << i;
+        std::cout << ((i > limit) ?  (2*limit - i) :  i);
         std::cout << " ";
     }
 }
@@ -21,9 +21,23 @@ int main() {
 ```py
 def printPyramid(limit):
 	for i in range(1, 2*limit):
-		print(2*limit - i, end=" ") if(i > limit) else print(i, end=" ")
+		print(2*limit - i, end=" ") if (i > limit) else print(i, end=" ")
 
 if __name__ == '__main__':
 	limit = int(input())
 	printPyramid(limit)
+```
+
+**Javascript**
+
+```js
+const printPyramid = (limit) => {
+  for (let i = 1; i < 2 * limit; i++) {
+    console.log(`${i > limit ? 2 * limit - i : i} `);
+  }
+};
+
+let number = 9;
+
+printPyramid(parseInt(number));
 ```

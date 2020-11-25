@@ -57,6 +57,31 @@ if __name__ == '__main__':
 	reverseMe(text)
 ```
 
+**Javascript**
+
+Javascipt strings are immutable.
+
+_N.B:_ `test.split("")` and `[...test]` works same.
+
+```js
+const reverseMe = (test) => {
+  let step1 = test.split(""); // ["I", " ", "a", "m", " ", "g", "o", "o", "d"]
+  let step2 = step1.reverse();
+  let step3 = step2.join("");
+  return step3;
+
+  // In a single line
+  // return test.split("").reverse().join("");
+
+  // Alternate approach with spread operator
+  // return [...test].reverse().join("");
+};
+
+let str = "I am good";
+
+reverseMe(str);
+```
+
 ---
 
 > Reverse a sentence without reversing the words. e.g. `I'm playing football` to `football playing I'm`.
@@ -143,10 +168,20 @@ int main()
 def reverseMe(text):
 	splitText = text.split(" ")
 	reverseText = splitText[::-1]
-	for txt in reverseText:
-		print(txt, end=" ")
+    joinText = " ".join(reverseText)
+    print(joinText)
 
 if __name__ == '__main__':
 	line = input()
 	reverseMe(line)
+```
+
+**Javascript**
+
+```js
+const reverseLine = (test) => {
+  return test.split(" ").reverse().join(" ");
+};
+
+reverseLine("He is good");
 ```
